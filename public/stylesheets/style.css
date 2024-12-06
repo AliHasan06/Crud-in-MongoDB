@@ -1,0 +1,56 @@
+/* Base Reset Styles */
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box; /* Ensures border and padding are included in element size */
+}
+
+/* Set base font styles */
+html {
+  font-size: 16px; /* Default font size for scaling */
+  font-family: 'Arial', sans-serif; /* Replace with your desired font */
+  line-height: 1.5; /* Readable line height */
+  scroll-behavior: smooth; /* Smooth scrolling for anchor links */
+}
+
+/* Full height for body */
+body {
+  min-height: 100vh; /* Ensures body covers full viewport */
+  background-color: #f9f9f9; /* Neutral background color */
+  color: #333; /* Default text color */
+}
+
+/* Remove default styles from inputs, buttons, and links */
+input, button, textarea, select {
+  font-family: inherit; /* Inherit font styles from parent */
+  font-size: inherit; /* Match parent font size */
+  /* Remove default borders */
+  outline: none; /* Remove default outlines */
+  appearance: none; /* Remove default styling in some browsers */
+}
+
+a {
+  text-decoration: none; /* Remove underline */
+  color: inherit; /* Inherit text color */
+}
+
+button {
+  cursor: pointer; /* Ensure buttons have a pointer cursor */
+}
+
+/* Utility Classes */
+img {
+  max-width: 100%; /* Ensure images are responsive */
+  display: block; /* Removes inline spacing */
+}
+
+ul, ol {
+  list-style: none; /* Removes bullet points or numbering */
+}
+
+table {
+  border-collapse: collapse; /* Removes double borders */
+  width: 100%; /* Table spans full width */
+}

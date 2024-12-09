@@ -16,9 +16,35 @@ app.get("/", (req, res) => {
 });
 
 
-app.get("/read", (req, res) => {
-  res.render("read");
+app.get("/read", async (req, res) => {
+  try {
+    // Await the result of the query
+    let allUsers = await userModel.find({});
+    
+    // Render the view with the users data
+    res.render("read", { users: allUsers });
+  } catch (error) {
+    console.error("Error fetching users:", error);
+    res.status(500).send("An error occurred while fetching users.");
+  }
 });
+
+app.get("/delete/:id", async (req, res) => {
+  
+  // Await the result of the query
+  let allUsers = await userModel.findOneAndDelete({_id: req.params.id});
+  
+  // Render the view with the users data
+  res.redirect("/read");
+})
+app.get("/edit/:id", async (req, res) => {
+  
+    // Await the result of the query
+    let allUsers = await userModel.findOne({_id: req.params.id});
+    res.render('edit', {user: allUsers})
+    // Render the view with the users data
+    
+})
 
 app.post("/create", async (req, res) => {
   let { name, email, image } = req.body
@@ -28,7 +54,7 @@ app.post("/create", async (req, res) => {
     image,
   })
 
-  res.send(createdUser)
+  res.redirect("/read")
 });
 
 

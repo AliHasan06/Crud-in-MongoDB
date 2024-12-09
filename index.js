@@ -46,6 +46,15 @@ app.get("/edit/:id", async (req, res) => {
     
 })
 
+app.post('/update/:id', async (req, res) => {
+  let { name, email, image } = req.body;
+  let updatedUser = await userModel.findOneAndUpdate(
+    { _id: req.params.id },
+    { name, email, image },
+    { new: true } // Return the updated document
+  );
+  res.redirect('/read');
+});
 app.post("/create", async (req, res) => {
   let { name, email, image } = req.body
  let createdUser = await userModel.create({
